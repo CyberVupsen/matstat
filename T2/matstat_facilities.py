@@ -201,10 +201,11 @@ def show_bootstr_compar_mean(sample, bootstr_mass, dens_func_teor, num_points):
     # axes[0].plot(x_mass, y_mass_teor,'b-', linewidth=2)
 
     axes[0].hist(bootstr_mass, num_of_bins, edgecolor='black', density=True)
-    axes[0].plot(x_mass, y_mass_teor,'g-', linewidth=2)
-    axes[0].plot(x_mass, y_mass_samp,'r-', linewidth=2)
-    axes[0].plot(x_mass, y_mass_samp_unmoved,'y--', linewidth=2)
+    axes[0].plot(x_mass, y_mass_teor,'g-', linewidth=2, label='ЦПТ, теоретическая')
+    axes[0].plot(x_mass, y_mass_samp,'r-', linewidth=2, label='ЦПТ, по выборке')
+    axes[0].plot(x_mass, y_mass_samp_unmoved,'y--', linewidth=2, label='ЦПТ, по выборке,\n с несмещён. дисперс.')
     axes[0].set_title("Оценка плотности распред. ср. арифм. эл-тов выборки")
+    axes[0].legend()
     plt.show()
 
 # ЦПТ среднего арифметического по выборке
@@ -267,8 +268,8 @@ def show_bootstr_compar_median(sample, bootstr_mass, dens_func_teor, num_points)
     # axes[0].plot(x_mass, y_mass_teor,'b-', linewidth=2)
 
     axes[0].hist(bootstr_mass, num_of_bins, edgecolor='black', density=True)
-    axes[0].plot(x_mass, y_mass_teor,'y-', linewidth=2)
-    axes[0].plot(x_mass, y_mass_samp,'r-', linewidth=2)
+    axes[0].plot(x_mass, y_mass_teor,'y-', linewidth=2, label='теоретическая')
+    axes[0].plot(x_mass, y_mass_samp,'r-', linewidth=2, label='по выборке')
     axes[0].set_title("Плотность распред. медианы выборки")
-
+    axes[0].legend()
     plt.show()
