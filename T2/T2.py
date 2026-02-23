@@ -10,6 +10,7 @@ lambda_param = 1
 
 sample = np.random.exponential(scale=1/lambda_param, size=n)
 
+print("Выборка:")
 print(sample)
 
 def p_ar_mean(x):
@@ -49,8 +50,8 @@ kf_asim = get_kf_asim(sample) # значение отличается в дес�
 print("Коэффициент асимметрии =", kf_asim)
 
 show_emp_distr_func(sample)
-show_hist(sample)
-show_boxplot(sample)
+show_hist(sample, "Гистограмма выборки объёма " + str(n))
+show_boxplot(sample, "Выборка объёма " + str(n))
 
 # сравнение бутстрапа средниих арифметических с ЦПТ (простейшей)
 ar_means = gener_bootstr_mass(sample, 1000, get_ar_mean)
@@ -63,7 +64,7 @@ kf_asims = gener_bootstr_mass(sample, 1000, get_kf_asim)
 chance = emp_distr_func(kf_asims, 1)
 print("P(kf_asim < 1) =", chance)
 # show_emp_distr_func(kf_asims)
-show_hist(kf_asims)
+show_hist(kf_asims, "Оценка плотности распред. коэф. асимметрии")
 
 # сравнение плотности распределения медианы выборки с бутстраповской оценкой этой плотности
 medians = gener_bootstr_mass(sample, 1000, get_median)
