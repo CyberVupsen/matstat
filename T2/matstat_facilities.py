@@ -104,16 +104,17 @@ def show_emp_distr_func(sample):
     plt.show()
 
 # построение гистограммы распределения
-def show_hist(sample):
+def show_hist(sample, hist_title):
     fig, axes = plt.subplots(1,2)
     num_of_bins = 1 + int(math.log2(len(sample)))
-    print("num of bins =",num_of_bins)
+    # print("num of bins =",num_of_bins)
     # axes[0].hist(sample, num_of_bins, edgecolor='black')
     axes[0].hist(sample, num_of_bins, edgecolor='black', density=True)
+    axes[0].set_title(hist_title)
     plt.show()
 
 # построение boxplot
-def show_boxplot(sample):
+def show_boxplot(sample, boxpl_title):
     fig, axes = plt.subplots(1,2)
     # axes[0].boxplot(sample, vert=False)
     axes[0].boxplot(sample, vert=False, whis=[0, 100], patch_artist=False, showmeans=False)
@@ -129,6 +130,7 @@ def show_boxplot(sample):
 
     # axes[1].set_yticklabels([])
     axes[0].grid(True, alpha=0.3)
+    axes[0].set_title(boxpl_title)
     plt.show()
 
 # определение оценки плотности распреления среднего арифметического элементов выборки бутстрапом
@@ -185,7 +187,7 @@ def get_density_func_unmoved(sample):
 def show_bootstr_compar_mean(sample, bootstr_mass, dens_func_teor, num_points):
     fig, axes = plt.subplots(1,2)
     num_of_bins = 1 + int(math.log2(len(bootstr_mass)))
-    print("num of bins =",num_of_bins)
+    # print("num of bins =",num_of_bins)
     # axes[0].hist(bootstr_mass, num_of_bins, edgecolor='black')
 
     x_min = np.min(sample)
@@ -202,6 +204,7 @@ def show_bootstr_compar_mean(sample, bootstr_mass, dens_func_teor, num_points):
     axes[0].plot(x_mass, y_mass_teor,'g-', linewidth=2)
     axes[0].plot(x_mass, y_mass_samp,'r-', linewidth=2)
     axes[0].plot(x_mass, y_mass_samp_unmoved,'y--', linewidth=2)
+    axes[0].set_title("Оценка плотности распред. ср. арифм. эл-тов выборки")
     plt.show()
 
 # ЦПТ среднего арифметического по выборке
@@ -252,7 +255,7 @@ def get_density_func_median(sample):
 def show_bootstr_compar_median(sample, bootstr_mass, dens_func_teor, num_points):
     fig, axes = plt.subplots(1,2)
     num_of_bins = 1 + int(math.log2(len(bootstr_mass)))
-    print("num of bins =",num_of_bins)
+    # print("num of bins =",num_of_bins)
     # axes[0].hist(bootstr_mass, num_of_bins, edgecolor='black')
 
     x_min = np.min(sample)
@@ -266,4 +269,6 @@ def show_bootstr_compar_median(sample, bootstr_mass, dens_func_teor, num_points)
     axes[0].hist(bootstr_mass, num_of_bins, edgecolor='black', density=True)
     axes[0].plot(x_mass, y_mass_teor,'y-', linewidth=2)
     axes[0].plot(x_mass, y_mass_samp,'r-', linewidth=2)
+    axes[0].set_title("Плотность распред. медианы выборки")
+
     plt.show()
